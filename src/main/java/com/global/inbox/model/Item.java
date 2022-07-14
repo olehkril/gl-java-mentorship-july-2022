@@ -21,7 +21,7 @@ public class Item {
     @Id
     UUID id;
     @NotNull
-    String username;
+    String name;
     String description;
     LocalDateTime created;
     LocalDateTime updated;

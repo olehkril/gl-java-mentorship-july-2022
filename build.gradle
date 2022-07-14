@@ -28,6 +28,8 @@ dependencies {
 	implementation group: 'org.springframework', name: 'spring-webflux', version: '5.3.21'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-webflux', version: '2.7.1'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.1'
+	implementation 'javax.validation:validation-api:2.0.1.Final'
+	implementation 'commons-validator:commons-validator:1.7'
 }
 
 tasks.named('test') {

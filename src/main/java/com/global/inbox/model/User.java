@@ -20,7 +20,7 @@ public class User {
     @Id
     UUID id;
     @NotNull
-    String username;
+    String name;
     @NotNull
     String email;
     LocalDateTime created;

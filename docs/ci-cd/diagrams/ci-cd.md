@@ -17,5 +17,6 @@ developer machine --> push to git (compile, test, code-coverage)  --> review (gi
 AWS-ECR, AWS-ECS, Docker, Github, Jenkins
 
 ## Diagrams
-![cicd image.png](../ci-cd/diagrams/cicd%20image.png)
+
+![cicd image.png](cicd%20image.png)
 

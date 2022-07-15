@@ -5,10 +5,10 @@ list with additional functionality (will be described in separate sections below
 the inbox there are: adding item, removing item, prioritizing items, etc.
 
 ## Diagrams
-![img.png](img.png)
+![img.png](../diagrams/appDiagram.png)
 
 
-[Open in PlantUml](http://www.plantuml.com/plantuml/uml/LO_12i9034Jl-OhyW8WzUf2AHV0gz0FIDfI5kWcR5FnyTotITG_3C6zc8Qqv9LzV2z3ead1xlV7F8XdUHK1pBOn1AJe-uY3lg-gEJp2Hqq369Uigl_4682iUBjyodd5cFwfObjLHb1Dva0Y5LgtoAMgIaSr2d6lSP7nxzjt_kAd6YMrTlDxiOSjnoaT_0000)
+[Open in PlantUml](../diagrams/appDiagram.puml)
 
 
 ## Features
@@ -22,7 +22,7 @@ With help of this feature user can add new item to the inbox.
 ## Data Model
 For more details, please refer to the data [design section](#Data-design)
 
-## Table InboxItem:
+## Table InboxItem
 
 | Column      | Type          | Description                                         |
 |-------------|---------------|-----------------------------------------------------|

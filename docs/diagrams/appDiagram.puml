@@ -1,0 +1,11 @@
+@startuml
+actor       User        as Foo
+participant InboxApp    as Foo1
+database    Database    as Foo2
+
+Foo -> Foo1 : get/post/put operation
+Foo1 -> Foo1 : data processing
+Foo1 -> Foo2 : CRUD operation
+Foo2 -> Foo1 : result
+Foo1 -> Foo : result
+@enduml

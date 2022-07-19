@@ -9,6 +9,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/items")
 public class ItemsController {
+
     @GetMapping
     private List<String> getAll() {
         return List.of("FirstItem","SecondItem","ThirdItem","FourthItem","FifthElementFrom");

@@ -1,5 +1,6 @@
 package com.global.inbox.controller;
 
+import com.global.inbox.dto.CreateItemDto;
 import com.global.inbox.dto.ItemDto;
 import com.global.inbox.model.Item;
 import com.global.inbox.service.ItemService;
@@ -23,7 +24,7 @@ public class ItemsController {
     }
 
     @PostMapping
-    public Item create(@RequestBody ItemDto itemDto) {
+    public ItemDto create(@RequestBody CreateItemDto itemDto) {
         return itemService.save(itemDto);
     }
 }

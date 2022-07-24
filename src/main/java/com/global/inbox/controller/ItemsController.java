@@ -1,10 +1,10 @@
 package com.global.inbox.controller;
 
+import com.global.inbox.dto.CreateItemDto;
+import com.global.inbox.dto.ItemDto;
 import com.global.inbox.model.Item;
 import com.global.inbox.service.ItemService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -12,14 +12,19 @@ import java.util.List;
 @RequestMapping("/items")
 public class ItemsController {
 
-    private ItemService itemService;
+    private final ItemService itemService;
 
     public ItemsController(ItemService itemService) {
         this.itemService = itemService;
     }
 
     @GetMapping
-    private List<Item> getAll() {
+    public List<ItemDto> getAll() {
         return itemService.getAll();
+    }
+
+    @PostMapping
+    public ItemDto create(@RequestBody CreateItemDto itemDto) {
+        return itemService.save(itemDto);
     }
 }

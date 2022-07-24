@@ -18,6 +18,11 @@ repositories {
 	mavenCentral()
 }
 
+ext {
+	mapstructVersion = "1.5.2.Final"
+	lombokMapstructBindingVersion = "0.2.0"
+}
+
 dependencies {
 
 	//spring
@@ -28,9 +33,16 @@ dependencies {
 	implementation 'org.liquibase:liquibase-core'
 	runtimeOnly 'org.postgresql:postgresql'
 
-	//lombok
+	//util
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+	//validation
+	implementation 'javax.validation:validation-api:2.0.1.Final'
+
+	//mapstruct
+	implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}", "org.projectlombok:lombok-mapstruct-binding:${lombokMapstructBindingVersion}"
 
 	//test
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'

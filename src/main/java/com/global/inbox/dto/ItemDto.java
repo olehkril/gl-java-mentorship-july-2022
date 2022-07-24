@@ -1,7 +1,7 @@
 package com.global.inbox.dto;
 
 import com.global.inbox.model.ItemStatus;
-import com.sun.istack.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,7 +17,7 @@ import java.util.UUID;
 public class ItemDto {
     UUID id;
     @NotNull
-    String username;
+    String name;
     String description;
     LocalDateTime created;
     LocalDateTime updated;

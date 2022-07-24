@@ -9,6 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class CreateItemDto {
     @NotNull
-    String username;
+    String name;
     String description;
 }

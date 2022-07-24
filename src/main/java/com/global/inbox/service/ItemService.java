@@ -10,5 +10,5 @@ public interface ItemService {
 
     ItemDto save(CreateItemDto itemDto);
 
-    List<Item> getAll();
+    List<ItemDto> getAll();
 }

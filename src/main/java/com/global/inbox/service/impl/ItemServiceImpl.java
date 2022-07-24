@@ -2,7 +2,7 @@ package com.global.inbox.service.impl;
 
 import com.global.inbox.dto.CreateItemDto;
 import com.global.inbox.dto.ItemDto;
-import com.global.inbox.dto.converter.ItemConverter;
+import com.global.inbox.dto.mapper.ItemMapper;
 import com.global.inbox.model.Item;
 import com.global.inbox.model.ItemStatus;
 import com.global.inbox.repository.ItemRepository;
@@ -16,21 +16,21 @@ import java.util.UUID;
 
 @Service
 @AllArgsConstructor
-public class ItemServiceStub implements ItemService {
+public class ItemServiceImpl implements ItemService {
 
     private ItemRepository itemRepository;
-    private ItemConverter itemConverter;
+    private ItemMapper itemMapper;
 
     @Override
     public ItemDto save(CreateItemDto itemDto) {
-        final Item item = new Item(UUID.randomUUID(), itemDto.getUsername(), itemDto.getDescription(),
+        final Item item = new Item(UUID.randomUUID(), itemDto.getName(), itemDto.getDescription(),
                 LocalDateTime.now(), LocalDateTime.now(), ItemStatus.ACTIVE);
         itemRepository.save(item);
-        return itemConverter.toDto(item);
+        return itemMapper.dtoToItem(item);
     }
 
     @Override
-    public List<Item> getAll() {
-        return List.of(Item.builder().id(UUID.randomUUID()).username("FifthElement").build(), Item.builder().id(UUID.randomUUID()).username("Luc Besson").build());
+    public List<ItemDto> getAll() {
+        return itemMapper.getListDto(itemRepository.findAll());
     }
 }

@@ -1,11 +1,7 @@
 spring:
-  jpa:
-    show-sql: true
-    open-in-view: false
-  datasource:
+  liquibase:
+    enabled: false
+  r2dbc:
     url: jdbc:postgresql://localhost:5432/inbox
     username: postgres
     password: postgres
-    driver-class-name: org.postgresql.Driver
-  liquibase:
-    enabled: false

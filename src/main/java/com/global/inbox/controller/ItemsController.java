@@ -2,11 +2,10 @@ package com.global.inbox.controller;
 
 import com.global.inbox.dto.CreateItemDto;
 import com.global.inbox.dto.ItemDto;
-import com.global.inbox.model.Item;
 import com.global.inbox.service.ItemService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 @RestController
 @RequestMapping("/items")
@@ -19,12 +18,12 @@ public class ItemsController {
     }
 
     @GetMapping
-    public List<ItemDto> getAll() {
+    public Flux<ItemDto> getAll() {
         return itemService.getAll();
     }
 
     @PostMapping
-    public ItemDto create(@RequestBody CreateItemDto itemDto) {
+    public Mono<ItemDto> create(@RequestBody CreateItemDto itemDto) {
         return itemService.save(itemDto);
     }
 }

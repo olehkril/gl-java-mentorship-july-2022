@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/items")
 public class ItemsController {
@@ -25,5 +27,10 @@ public class ItemsController {
     @PostMapping
     public Mono<ItemDto> create(@RequestBody CreateItemDto itemDto) {
         return itemService.save(itemDto);
+    }
+
+    @DeleteMapping("/{itemId}")
+    public Mono<Void> deleteItemById(@PathVariable UUID itemId) {
+        return itemService.delete(itemId);
     }
 }

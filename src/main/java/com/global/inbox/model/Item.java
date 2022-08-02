@@ -1,23 +1,26 @@
 package com.global.inbox.model;
 
 
-import com.sun.istack.NotNull;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Transient;
+import org.springframework.data.domain.Persistable;
+import org.springframework.data.relational.core.mapping.Table;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Table(name = "items")
-public class Item {
+public class Item implements Persistable<UUID> {
     @Id
     UUID id;
     @NotNull
@@ -25,6 +28,20 @@ public class Item {
     String description;
     LocalDateTime created;
     LocalDateTime updated;
-    @Enumerated(EnumType.STRING)
     ItemStatus status;
+
+    @Transient
+    @JsonIgnore
+    public boolean newItem;
+
+    @Transient
+    @Override
+    public boolean isNew() {
+        return this.newItem || id == null;
+    }
+
+    public Item setAsNew(){
+        this.newItem =true;
+        return this;
+    }
 }

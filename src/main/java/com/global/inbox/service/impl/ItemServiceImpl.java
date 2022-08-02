@@ -9,9 +9,10 @@ import com.global.inbox.repository.ItemRepository;
 import com.global.inbox.service.ItemService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -22,15 +23,25 @@ public class ItemServiceImpl implements ItemService {
     private ItemMapper itemMapper;
 
     @Override
-    public ItemDto save(CreateItemDto itemDto) {
+    public Mono<ItemDto> save(CreateItemDto itemDto) {
         final Item item = new Item(UUID.randomUUID(), itemDto.getName(), itemDto.getDescription(),
-                LocalDateTime.now(), LocalDateTime.now(), ItemStatus.ACTIVE);
-        itemRepository.save(item);
-        return itemMapper.dtoToItem(item);
+                LocalDateTime.now(), LocalDateTime.now(), ItemStatus.ACTIVE,true);
+
+        return itemMapper.fromMono(itemRepository.save(item));
     }
 
     @Override
-    public List<ItemDto> getAll() {
-        return itemMapper.getListDto(itemRepository.findAll());
+    public Flux<ItemDto> getAll() {
+        return itemMapper.fromFlux(itemRepository.findAll());
+    }
+
+    @Override
+    public Mono<ItemDto> update(CreateItemDto itemDto) {
+        return null;
+    }
+
+    @Override
+    public Mono<Void> delete(UUID itemID) {
+        return itemRepository.deleteById(itemID);
     }
 }

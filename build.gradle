@@ -2,11 +2,17 @@ plugins {
 	id 'org.springframework.boot' version '2.7.1'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'com.google.cloud.tools.jib' version('3.1.4')
 }
 
-group = 'com.global'
-version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '17'
+jib {
+	from {
+		image = 'azul/zulu-openjdk:17-jre'
+	}
+	to {
+		image = 'inbox:latest'
+	}
+}
 
 configurations {
 	compileOnly {

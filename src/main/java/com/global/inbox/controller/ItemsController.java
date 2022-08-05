@@ -20,9 +20,13 @@ public class ItemsController {
     }
 
     @GetMapping
+    public String applicationStatus() {
+        return "Application is up and running";
+    }
+   /* @GetMapping
     public Flux<ItemDto> getAll() {
         return itemService.getAll();
-    }
+    }*/
 
     @PostMapping
     public Mono<ItemDto> create(@RequestBody CreateItemDto itemDto) {
